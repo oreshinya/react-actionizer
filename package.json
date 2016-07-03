@@ -1,14 +1,31 @@
 {
   "name": "react-actionizer",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "React bindings for Actionizer",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "browserify --extension=.jsx example/index.jsx -o example/bundle.js -t babelify && browser-sync start --server 'example'",
     "prepublish": "rm -rf lib && babel src -d lib"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oreshinya/react-actionizer.git"
+  },
+  "keywords": [
+    "react",
+    "flux",
+    "redux",
+    "actionizer"
+  ],
   "author": "oreshinya",
   "license": "MIT",
+  "peerDependencies": {
+    "react": "^15.2.0",
+    "react-addons-shallow-compare": "^15.2.0"
+  },
   "devDependencies": {
     "actionizer": "^0.2.2",
     "babel-cli": "^6.10.1",
