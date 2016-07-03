@@ -1,7 +1,7 @@
 # React Actionizer
 [![npm version](https://badge.fury.io/js/react-actionizer.svg)](https://badge.fury.io/js/react-actionizer)
 
-React bindings for Actionizer.
+React bindings for [Actionizer](https://github.com/oreshinya/actionizer).
 
 ## Dependencies
 - `react`
