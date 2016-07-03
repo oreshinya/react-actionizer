@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
-import { createStore } from 'actionizer';
+import { createStore, select, put } from 'actionizer';
 import { Provider, connect } from '../src';
 
 const initialState = fromJS({
@@ -62,22 +62,44 @@ const todo = createSelector(
   }
 );
 
-@connect(todo)
+const renameTodo = function*(id) {
+  const state = yield select();
+  const nextState = state.setIn(['todosById', `${id}`, 'title'], 'Renamed');
+  yield put(nextState);
+}
+
+const mapDispatchForTodo = (dispatch, props) => {
+  return {
+    rename() {
+      dispatch(renameTodo(props.id));
+    }
+  };
+};
+
+
+@connect(todo, mapDispatchForTodo)
 class Todo extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
-    todo: PropTypes.object.isRequired
+    todo: PropTypes.object.isRequired,
+    rename: PropTypes.func.isRequired
   };
 
   render() {
-    const { todo } = this.props;
+    const { todo, rename } = this.props;
     return (
       <li>
-        <div>{todo.get('title')}</div>
+        <div onClick={rename.bind(this)}>{todo.get('title')}</div>
         <User id={todo.get('userId')} />
       </li>
     );
   }
+}
+
+const renameUser = function*(id) {
+  const state = yield select();
+  const nextState = state.setIn(['usersById', `${id}`, 'name'], 'Renamed');
+  yield put(nextState);
 }
 
 const userSelector = (state, props) => {
@@ -91,16 +113,29 @@ const user = createSelector(
   }
 );
 
-@connect(user)
+const mapDispatchForUser = (dispatch, props) => {
+  return {
+    rename() {
+      dispatch(renameUser(props.id));
+    }
+  };
+};
+
+@connect(user, mapDispatchForUser)
 class User extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    rename: PropTypes.func.isRequired
   };
 
   render() {
-    const { user } = this.props;
-    return (<div>{user.get('name')}</div>);
+    const { user, rename } = this.props;
+    return (
+      <div onClick={rename.bind(this)}>
+        {user.get('name')}
+      </div>
+    );
   }
 }
 
