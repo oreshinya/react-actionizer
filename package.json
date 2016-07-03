@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "example": "browserify --extension=.jsx example/index.jsx -o example/bundle.js -t babelify",
     "prepublish": "rm -rf lib && babel src -d lib"
   },
   "author": "oreshinya",
@@ -16,6 +17,8 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-1": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
     "immutable": "^3.8.1",
     "react": "^15.2.0",
     "react-addons-shallow-compare": "^15.2.0",

@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
@@ -35,16 +36,15 @@ const todoList = createSelector(
 @connect(todoList)
 class TodoList extends Component {
   static propTypes = {
-    todos: PropTypes.array.isRequired
+    todos: PropTypes.object.isRequired
   };
 
   render() {
     const { todos } = this.props;
-
     return (
       <ul>
         {todos.map((todo) => {
-          return (<Todo key={todo.id} id={todo.id} />);
+          return (<Todo key={todo} id={todo} />);
         })}
       </ul>
     );
@@ -52,7 +52,7 @@ class TodoList extends Component {
 }
 
 const todoSelector = (state, props) => {
-  return state.getIn(["todosById", props.id]);
+  return state.getIn(["todosById", `${props.id}`]);
 };
 
 const todo = createSelector(
@@ -71,17 +71,17 @@ class Todo extends Component {
 
   render() {
     const { todo } = this.props;
-    render (
+    return (
       <li>
-        <div>{todo.title}</div>
-        <User id={todo.userId} />
+        <div>{todo.get('title')}</div>
+        <User id={todo.get('userId')} />
       </li>
     );
   }
 }
 
 const userSelector = (state, props) => {
-  return state.getIn(["usersById", props.id]);
+  return state.getIn(["usersById", `${props.id}`]);
 };
 
 const user = createSelector(
@@ -100,7 +100,7 @@ class User extends Component {
 
   render() {
     const { user } = this.props;
-    return (<div>{user.name}</div>);
+    return (<div>{user.get('name')}</div>);
   }
 }
 

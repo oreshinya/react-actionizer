@@ -1,4 +1,4 @@
-import { Component, PropTypes, Children } from 'react';
+import React, { Component, PropTypes, Children } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
@@ -29,8 +29,8 @@ export class Provider extends Component {
 
 export function connect(mapStateToProps, mapDispatchToProps) {
   const shouldSubscribe = Boolean(mapStateToProps);
-  const mapState = mapStateToProps || (state) => { return {}; };
-  const mapDispatch = mapDispatchToProps || (dispatch) => { return { dispatch }; };
+  const mapState = mapStateToProps || ((state) => { return {}; });
+  const mapDispatch = mapDispatchToProps || ((dispatch) => { return { dispatch }; });
   const mergeProps = (stateProps, dispatchProps, parentProps) => {
     return {
       ...parentProps,
