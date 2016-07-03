@@ -1,6 +1,5 @@
 # React Actionizer
 [![npm version](https://badge.fury.io/js/react-actionizer.svg)](https://badge.fury.io/js/react-actionizer)
-[![Build Status](https://travis-ci.org/oreshinya/react-actionizer.svg?branch=master)](https://travis-ci.org/oreshinya/react-actionizer)
 
 React bindings for Actionizer.
 
