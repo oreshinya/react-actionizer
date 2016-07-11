@@ -24,7 +24,8 @@
   "license": "MIT",
   "peerDependencies": {
     "react": "^15.2.0",
-    "react-addons-shallow-compare": "^15.2.0"
+    "react-addons-shallow-compare": "^15.2.0",
+    "actionizer": "^0.2.2"
   },
   "devDependencies": {
     "actionizer": "^0.2.2",
