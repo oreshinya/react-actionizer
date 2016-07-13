@@ -6,6 +6,7 @@ React bindings for [Actionizer](https://github.com/oreshinya/actionizer).
 ## Dependencies
 - `react`
 - `react-addons-shallow-compare`
+- `actionizer`
 
 ## Installation
 
