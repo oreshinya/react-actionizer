@@ -1,6 +1,6 @@
 {
   "name": "react-actionizer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React bindings for Actionizer",
   "main": "lib/index.js",
   "files": [
