@@ -3,7 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
-import { createStore, select, put } from 'actionizer';
+import { createStore } from 'actionizer';
+import { select, put } from 'actionizer/commands';
 import { Provider, connect } from '../src';
 
 const initialState = fromJS({

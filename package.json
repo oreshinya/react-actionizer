@@ -1,6 +1,6 @@
 {
   "name": "react-actionizer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "React bindings for Actionizer",
   "main": "lib/index.js",
   "files": [
@@ -25,10 +25,10 @@
   "peerDependencies": {
     "react": "^15.2.0",
     "react-addons-shallow-compare": "^15.2.0",
-    "actionizer": "^0.2.2"
+    "actionizer": "^0.4.2"
   },
   "devDependencies": {
-    "actionizer": "^0.2.2",
+    "actionizer": "^0.4.2",
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.9.1",
