@@ -79,6 +79,22 @@ window.addEventListener('load', () => {
 });
 ```
 
+## API
+
+### `<Provider store>`
+Makes the Actionizer store available in `connect`ed component.
+
+#### Props
+- `store`: Actionizer store.
+- `children`: The root of your component hierarchy.
+
+### `connect(mapStateToProps, mapDispatchToProps)`
+Connects a React component and Actionizer store.
+
+#### Arguments
+- `mapStateToProps(state, props): stateProps`: Generate props from store state. This will be called when store will be changed. Returned object is merged in passed own props.
+- `mapDispatchToProps(dispatch, props): dispatchProps`: Generate props for dispatch functions. This will be called once initializing component. Returned object is merged in passed own props.
+
 ## LICENSE
 
 MIT
