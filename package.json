@@ -26,10 +26,10 @@
   "peerDependencies": {
     "react": "^15.2.0",
     "react-addons-shallow-compare": "^15.2.0",
-    "actionizer": "^0.4.2"
+    "actionizer": "^0.4.3"
   },
   "devDependencies": {
-    "actionizer": "^0.4.2",
+    "actionizer": "^0.4.3",
     "babel-cli": "^6.10.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.9.1",
