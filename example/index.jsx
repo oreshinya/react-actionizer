@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
 import { createSelector } from 'reselect';
 import { createStore } from 'actionizer';
-import { select, put } from 'actionizer/commands';
+import { reduce } from 'actionizer/commands';
 import { Provider, connect } from '../src';
 
 const initialState = fromJS({
@@ -64,9 +64,12 @@ const todo = createSelector(
 );
 
 const renameTodo = function*(id) {
-  const state = yield select();
-  const nextState = state.setIn(['todosById', `${id}`, 'title'], 'Renamed');
-  yield put(nextState);
+  yield reduce((state) => {
+    return state.setIn(
+      ['todosById', `${id}`, 'title'],
+      'Renamed'
+    );
+  });
 }
 
 const mapDispatchForTodo = (dispatch, props) => {
@@ -98,9 +101,12 @@ class Todo extends Component {
 }
 
 const renameUser = function*(id) {
-  const state = yield select();
-  const nextState = state.setIn(['usersById', `${id}`, 'name'], 'Renamed');
-  yield put(nextState);
+  yield reduce((state) => {
+    return state.setIn(
+      ['usersById', `${id}`, 'name'],
+      'Renamed'
+    );
+  });
 }
 
 const userSelector = (state, props) => {

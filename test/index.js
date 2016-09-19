@@ -4,7 +4,7 @@ import { test } from 'eater/runner';
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'actionizer';
-import { select, put } from 'actionizer/commands';
+import { reduce } from 'actionizer/commands';
 import TestUtils from 'react-addons-test-utils';
 import { Provider, connect } from '../src';
 
@@ -31,8 +31,9 @@ test('Provider', () => {
 
 test('connect', () => {
   const countUp = function*() {
-    const state = yield select();
-    yield put(Object.assign({}, state, { count: state.count+1 }));
+    yield reduce((state) => {
+      return {...state, count: state.count + 1};
+    });
   };
   const mapStateToProps = ({count}) => {
     return { count };

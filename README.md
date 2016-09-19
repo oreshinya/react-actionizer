@@ -33,9 +33,12 @@ const mapStateToProps = createSelector(
 );
 
 const renameTodo = function*(id) {
-  const state = yield select();
-  const nextState = state.setIn(['todosById', `${id}`, 'title'], 'Renamed');
-  yield put(nextState);
+  yield reduce((state) => {
+    return state.setIn(
+      ['todosById', `${id}`, 'title'],
+      'Renamed'
+    );
+  });
 }
 
 const mapDispatchToProps = (dispatch, props) => {
